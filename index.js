@@ -1,11 +1,9 @@
-function getAlert() {
-  alert("Hello User!");
-}
+const btn3 = document.querySelector('#btnbtn')
 
-function pipiHello() {
-    console.log('pipi, hello!')
-}
+console.log(btn3)
 
-const pipiButton = document.getElementById("pipi");
+const btnCollection = document.querySelectorAll('button')
+console.log(btnCollection)
 
-pipiButton.addEventListener('mouseenter', pipiHello);
+const paragraphCollection = document.querySelectorAll('.paragraph:nth-child(even)')
+console.log(paragraphCollection)
