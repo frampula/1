@@ -1,9 +1,45 @@
-const btn3 = document.querySelector('#btnbtn')
+const CURRENCY = {
+  USD_TO_UAH: 37.65,
+  EUR_TO_UAH: 40.61,
+};
 
-console.log(btn3)
+const converterForm = document.querySelector("#currency-converter-form");
 
-const btnCollection = document.querySelectorAll('button')
-console.log(btnCollection)
+converterForm.addEventListener("submit", convertHandler);
 
-const paragraphCollection = document.querySelectorAll('.paragraph:nth-child(even)')
-console.log(paragraphCollection)
+function convertHandler(event) {
+  event.preventDefault();
+
+  const amount = Number(document.querySelector("#amount").value);
+  const currency = document.querySelector("#currency").value;
+
+  let convertedAmount;
+
+  const { USD_TO_UAH: usdCourse, EUR_TO_UAH: eurCourse } = CURRENCY;
+
+  switch (currency) {
+    case "USD": {
+      convertedAmount = amount * usdCourse;
+      break;
+    }
+    case "EUR": {
+      convertedAmount = amount * eurCourse;
+      break;
+    }
+    default:
+      throw new Error("Something went wrong");
+  }
+
+  if (currency === "USD") {
+    convertedAmount = amount * usdCourse;
+  } else if (currency === "EUR") {
+    convertedAmount = amount * eurCourse;
+  } else {
+    throw new Error("Something went wrong");
+  }
+
+  const resultDiv = document.querySelector("#result");
+  resultDiv.innerHTML = `${amount} ${currency} = ${convertedAmount.toFixed(
+    2
+  )} UAH`;
+}
