@@ -1,16 +1,15 @@
-const Farenheit = 33.8;
-const results = document.getElementById("results");
+const field = document.querySelector("#game-field");
+const box = document.querySelector("box");
 
-Celsium.addEventListener("submit", Metamorphose);
+field.addEventListener("click", clickHandler, { capture: true });
 
+function clickHandler(event) {
+  event.stopPropagation();
 
-function Metamorphose(event) {
-  const Celsium = document.getElementById("Celsium");
-  event.preventDefault();
+  if (event.currentTarget === event.target) {
+    const {target: {children: {box}}, clientX, clientY} = event
 
-  const amount = document.querySelector('#amount').value
-
-  let farenheitAmount = Farenheit * amount
-  results.innerHTML = `${amount} C = ${farenheitAmount} F`;
-  return farenheitAmount;
+    box.style.top = `${clientY}px`;
+    box.style.left = `${clientX}px`;
+  }
 }
