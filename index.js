@@ -9,7 +9,9 @@ function clickHandler(event) {
   if (event.currentTarget === event.target) {
     const {target: {children: {box}}, clientX, clientY} = event
 
-    box.style.top = `${clientY}px`;
-    box.style.left = `${clientX}px`;
+    
+
+    box.style.top = `${clientY - (box.offsetHeight / 2)}px`;
+    box.style.left = `${clientX - (box.offsetWidth / 2)}px`;
   }
 }
