@@ -1,16 +1,14 @@
-const form = document.querySelector("#todo-form");
+// fetch("./user.json")
+// .then((response) => {
+//   return response.json();
+// }).then((data) => {
+//     console.log(data)
+// });
 
-form.addEventListener("submit", addItem);
 
-function addItem(event) {
-  event.preventDefault();
-  console.log(event)
-
-  const {target} = event;
-
-  const [todoInput] = target;
-  const list = document.querySelector("#todo-list");
-  const li = document.createElement('li')
-  li.textContent = todoInput.value.trim;
-  list.append(li)
-}
+fetch('https://api.monobank.ua/bank/currency')
+.then((response) => {
+  return response.json();
+}).then((data) => {
+    console.log(data)
+});
